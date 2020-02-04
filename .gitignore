@@ -16,3 +16,6 @@
 
 # Idea folder
 .idea
+
+# MAC OS file
+.DS_Store
