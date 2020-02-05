@@ -7,18 +7,38 @@ This project is using the lib from "github.com/creachadair/otp" as the HOTP (RFC
 # Build
 
 ```bash
-go build .
+go build -o otp cmd/otp/main.go
 ```
 
 # Usage
 
-## Direct output current OTP
+## OTP help
 ```bash
-otp <Activation Code>
+otp --help
+Usage: otp <command>
+
+An OTP command tool
+
+Flags:
+      --help       Show context-sensitive help.
+  -D, --debug      Enable debug mode
+  -V, --verbose    Verbose mode.
+  -v, --version    Print Version.
+
+Commands:
+  get    Get otp code.
+
+Run "otp <command> --help" for more information on a command.
+```
+
+## Get an otp code from secret
+
+```bash
+otp get --secret <secret>
 ```
 
 ## Pipe with openconnect VPN to automatic pass the MFA
 ```bash
 # make sure to remove "<>" with following
-echo "<your password>\n`otp <your activation code>`" | sudo openconnect -u <your username> https://<your vpn url with port> --passwd-on-stdin
+echo "<your password>\n`otp get -s <secret>`" | sudo openconnect -u <your username> https://<your vpn url with port> --passwd-on-stdin
 ```
