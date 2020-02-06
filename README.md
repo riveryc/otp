@@ -7,14 +7,16 @@ This project is using the lib from "github.com/creachadair/otp" as the HOTP (RFC
 # Build
 
 ```bash
-go build -o otp cmd/otp/main.go
+mkdir bin
+go build -o bin/otp ./cmd/otp
 ```
 
 # Usage
 
 ## OTP help
 ```bash
-otp --help
+cd bin
+./otp --help
 Usage: otp <command>
 
 An OTP command tool
@@ -34,7 +36,7 @@ Run "otp <command> --help" for more information on a command.
 ## Get an otp code from secret
 
 ```bash
-otp get --secret <secret>
+./otp get --secret <secret>
 ```
 
 ## Pipe with openconnect VPN to automatic pass the MFA
